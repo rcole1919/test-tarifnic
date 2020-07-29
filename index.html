@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Тарифник - Домашний интернет</title>
+    <link rel="stylesheet" href="css/style-min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preload" href="fonts/open-sans-v17-latin-300.woff2" as="font">
+    <link rel="preload" href="fonts/open-sans-v17-latin-600.woff2" as="font">
+    <link rel="preload" href="fonts/open-sans-v17-latin-regular.woff2" as="font">
+    <link rel="preload" href="fonts/roboto-v20-latin-regular.woff2" as="font">
+    <link rel="preload" href="fonts/roboto-v20-latin-500.woff2" as="font">
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <img src="img/logo.svg" alt="Логотип Тарифник" width="165" height="30">
+      </div>
+      <nav class="header__nav site-nav" aria-label="Навигация по сайту">
+        <button class="site-nav__open" type="button"></button>
+        <ul class="site-nav__list">
+          <li class="site-nav__item site-nav__item--current">
+            <a href="#" class="site-nav__item-link">Домашний интернет</a>
+            <ul class="site-nav__option-list">
+              <li class="site-nav__option">
+                <a href="#" class="site-nav__option-link">Для модема</a>
+              </li>
+              <li class="site-nav__option">
+                <a href="#" class="site-nav__option-link">Для дачи и дома</a>
+              </li>
+              <li class="site-nav__option">
+                <a href="#" class="site-nav__option-link">Для смартфона</a>
+              </li>
+            </ul>
+          </li>
+          <li class="site-nav__item">
+            <a href="#" class="site-nav__item-link">Интернет и ТВ</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="#" class="site-nav__item-link">Телевидение</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="tel:+78001111111" class="header__link" aria-label="Свяжитесь с нами по телефону">8 800 111 11 11</a>
+    </header>
+    <main class="main">
+      <h1 class="page-title">
+        Тарифы домашний интернет
+      </h1>
+      <section class="request">
+        <h2 class="request__title">
+          Заявка на подключение
+        </h2>
+        <form class="request__form" action="https://tarifnik.ru/rabota/api/order_controller" method="POST">
+          <div class="request__place">
+            <div class="request__place-wrapper">
+              <input class="request__radio-input visually-hidden" id="flat" type="radio" name="place" value="flat" checked>
+              <label class="request__radio-label" for="flat">В квартиру</label>
+            </div>
+            <div class="request__place-wrapper">
+              <input class="request__radio-input visually-hidden" id="office" type="radio" name="place" value="office">
+              <label class="request__radio-label" for="office">В частный дом/офис</label>
+            </div>
+          </div>
+          <div class="request__personal">
+            <input type="text" class="request__personal-input" id="phone" placeholder="Ваш телефон*" required>
+            <input type="text" class="request__personal-input" id="name" placeholder="Ваше имя" maxlength="80">
+            <input type="text" class="request__personal-input" id="address" placeholder="Адрес подключения" maxlength="255">
+          </div>
+          <div class="request__valid-text">
+            Поля, отмеченные *, обязательны к заполнению
+          </div>
+          <button class="request__submit" type="submit">
+            Отправить заявку
+          </button>
+        </form>
+      </section>
+      <section class="tariffs">
+        <h2 class="tariffs__title visually-hidden">
+          Перечень доступных тарифов
+        </h2>
+        <ul class="tariffs__list"></ul>
+      </section>
+    </main>
+
+    <template id="tariff">
+      <li class="tariffs__item tariff">
+        <h3 class="tariff__title"></h3>
+        <div class="tariff__description">
+          <div class="tariff__speed">
+            До <span class="tariff__speed-value"></span> Мбит/с
+          </div>
+          <div class="tariff__tv">
+            <span class="tariff__channels-count"></span> <span class="tariff__channel-end">каналов</span><br><span class ="tariff__channels-hd"></span>HD
+          </div>
+        </div>
+        <div class="tariff__connect">
+          <table class="tariff__price price">
+            <tr>
+              <td class="price__value" rowspan="2">
+                899
+              </td>
+              <td class="price__currency">
+                руб
+              </td>
+            </tr>
+            <tr>
+              <td class="price__duration">
+                мес
+              </td>
+            </tr>
+          </table>
+          <a href="#" class="tariff__link">
+            Подключить
+          </a>
+        </div>
+      </li>
+    </template>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/option-list.js"></script>
+    <script src="js/backend.js"></script>
+    <script src="js/render-tariffs.js"></script>
+    <script src="js/form.js"></script>
+  </body>
+</html>
